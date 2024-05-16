@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using OneToManyEntityFrameworkDemo.Data;
+
 namespace OneToManyEntityFrameworkDemo
 {
     public class Program
@@ -5,7 +8,10 @@ namespace OneToManyEntityFrameworkDemo
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddDbContext<BoekenDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
