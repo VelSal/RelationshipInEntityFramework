@@ -14,9 +14,12 @@ namespace OneToManyEntityFrameworkDemo.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //Configure Auteur entity (or table)
+            //Configure Auteur entity (or table) with restrictions
+            modelBuilder.Entity<Auteur>().HasKey(a => a.AuteurId);
             modelBuilder.Entity<Auteur>().HasMany(a => a.Boeken).WithOne(b => b.Auteur).HasForeignKey(b => b.AuteurId).OnDelete(DeleteBehavior.NoAction);
-
+            //Configure Boeks entity with restrictions
+            modelBuilder.Entity<Boek>().HasKey(a => a.BoekId);
+            modelBuilder.Entity<Boek>().HasOne(x => x.Auteur).WithMany(x => x.Boeken).HasForeignKey(x => x.AuteurId).OnDelete(DeleteBehavior.NoAction);
             SeedData.AddRecords(modelBuilder);
         }
         public DbSet<OneToManyEntityFrameworkDemo.Models.ViewModels.BoekAuteurViewModel> BoekAuteurViewModel { get; set; } = default!;
