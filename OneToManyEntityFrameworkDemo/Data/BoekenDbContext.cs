@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OneToManyEntityFrameworkDemo.Models;
+using OneToManyEntityFrameworkDemo.Models.ViewModels;
 
 namespace OneToManyEntityFrameworkDemo.Data
 {
@@ -18,5 +19,6 @@ namespace OneToManyEntityFrameworkDemo.Data
 
             SeedData.AddRecords(modelBuilder);
         }
+        public DbSet<OneToManyEntityFrameworkDemo.Models.ViewModels.BoekAuteurViewModel> BoekAuteurViewModel { get; set; } = default!;
     }
 }

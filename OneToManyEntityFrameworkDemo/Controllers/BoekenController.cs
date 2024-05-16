@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OneToManyEntityFrameworkDemo.Data;
+using OneToManyEntityFrameworkDemo.Models.ViewModels;
 
 namespace OneToManyEntityFrameworkDemo.Controllers
 {
@@ -13,8 +14,15 @@ namespace OneToManyEntityFrameworkDemo.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var boeken = await _context.Boeks.ToListAsync();
-            return View(boeken);
+            var boekAuteurViewModel = _context.Boeks
+                .Include(b => b.Auteur)
+                .Select(b => new BoekAuteurViewModel
+                {
+                    BoekId = b.BoekId,
+                    Title = b.Title,
+                    AuteurNaam = b.Auteur.Naam
+                });
+            return View(boekAuteurViewModel);
         }
     }
 }
