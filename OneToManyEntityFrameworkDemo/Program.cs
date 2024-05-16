@@ -34,7 +34,7 @@ namespace OneToManyEntityFrameworkDemo
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Boeken}/{action=Index}/{id?}");
 
             app.Run();
         }

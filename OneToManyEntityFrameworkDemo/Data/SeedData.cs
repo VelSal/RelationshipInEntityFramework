@@ -7,13 +7,6 @@ namespace OneToManyEntityFrameworkDemo.Data
     {
         public static void AddRecords(ModelBuilder modelBuilder)
         {
-            //Configure Auteur entity (or table)
-            modelBuilder.Entity<Auteur>()
-                .HasMany(a => a.Boeken)
-                .WithOne(b => b.Auteur)
-                .HasForeignKey(b => b.AuteurId)
-                .OnDelete(DeleteBehavior.NoAction);
-
             //Seed data
             modelBuilder.Entity<Auteur>().HasData(
                 new Auteur { AuteurId = 1, Naam = "I. Asimov" },

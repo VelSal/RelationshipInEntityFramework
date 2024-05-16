@@ -12,6 +12,10 @@ namespace OneToManyEntityFrameworkDemo.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //Configure Auteur entity (or table)
+            modelBuilder.Entity<Auteur>().HasMany(a => a.Boeken).WithOne(b => b.Auteur).HasForeignKey(b => b.AuteurId).OnDelete(DeleteBehavior.NoAction);
+
             SeedData.AddRecords(modelBuilder);
         }
     }
