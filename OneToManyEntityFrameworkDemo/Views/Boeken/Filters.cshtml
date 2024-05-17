@@ -4,5 +4,5 @@
 	<select asp-for="GeselecteerdeAuteurId" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))" class="form-control">
 		<option value="">Selectionnez un auteur</option>
 	</select>
-	<button type="submit" class="btn btn-primary">Filter</button>
+	<button type="submit" class="btn btn-primary mt-1 mb-1">Filter</button>
 </form>
