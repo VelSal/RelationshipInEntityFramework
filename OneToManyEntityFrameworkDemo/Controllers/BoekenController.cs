@@ -62,7 +62,7 @@ namespace OneToManyEntityFrameworkDemo.Controllers
             
             IQueryable<Boek> boekenQuery = _context.Boeks.Include(b => b.Auteur);
 
-            if (GeselecteerdeAuteurId.HasValue )
+            if (GeselecteerdeAuteurId.HasValue && GeselecteerdeAuteurId > 0)
             {
                 boekenQuery = boekenQuery.Where(b => b.AuteurId == GeselecteerdeAuteurId.Value);
             }
