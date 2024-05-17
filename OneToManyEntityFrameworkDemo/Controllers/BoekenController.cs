@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OneToManyEntityFrameworkDemo.Data;
+using OneToManyEntityFrameworkDemo.Models;
 using OneToManyEntityFrameworkDemo.Models.ViewModels;
 
 namespace OneToManyEntityFrameworkDemo.Controllers
@@ -24,9 +25,35 @@ namespace OneToManyEntityFrameworkDemo.Controllers
                 });
             return View(boekAuteurViewModel);
         }
-        public async Task<IActionResult> Filters()
+        public async Task<IActionResult> Filters(int? GeselecteerdeAuteurId)    //Pour le dropdown
         {
-            return View();
+            var auteurs = await _context.Auteurs.ToListAsync();
+            //Ne fait rien ici
+            IQueryable<Boek> boekenQuery = _context.Boeks.Include(b => b.Auteur);
+
+            if (GeselecteerdeAuteurId.HasValue)
+            {
+                boekenQuery = boekenQuery.Where(b => b.AuteurId == GeselecteerdeAuteurId);
+            }
+
+            //C'est ici qu'il est activé car ToListAsync()
+            var boeken = await boekenQuery.ToListAsync();
+            var boekenViewModel = boeken.Select(b => new BoekAuteurViewModel
+            {
+                BoekId = b.BoekId,
+                Title = b.Title,
+                AuteurNaam = b.Auteur.Naam
+            }).ToList();
+
+            var filtersViewModel = new BoekenViewModel
+            {
+                Auteurs = auteurs,
+                Boeken = boekenViewModel,
+                //null coalescing operation (+- comme ternary mais pour db)
+                GeselecteerdeAuteurId = GeselecteerdeAuteurId ?? 0
+            };
+
+            return View(filtersViewModel);
         }
     }
 }

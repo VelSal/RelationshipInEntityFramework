@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OneToManyEntityFrameworkDemo.Data;
 
@@ -11,9 +12,11 @@ using OneToManyEntityFrameworkDemo.Data;
 namespace OneToManyEntityFrameworkDemo.Migrations
 {
     [DbContext(typeof(BoekenDbContext))]
-    partial class BoekenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240517083608_ok")]
+    partial class ok
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

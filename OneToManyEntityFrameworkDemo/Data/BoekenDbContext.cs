@@ -23,5 +23,6 @@ namespace OneToManyEntityFrameworkDemo.Data
             SeedData.AddRecords(modelBuilder);
         }
         public DbSet<OneToManyEntityFrameworkDemo.Models.ViewModels.BoekAuteurViewModel> BoekAuteurViewModel { get; set; } = default!;
+        public DbSet<OneToManyEntityFrameworkDemo.Models.ViewModels.BoekenViewModel> BoekenViewModel { get; set; } = default!;
     }
 }

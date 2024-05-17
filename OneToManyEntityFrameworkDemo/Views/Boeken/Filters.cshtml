@@ -1,0 +1,8 @@
+﻿@model OneToManyEntityFrameworkDemo.Models.ViewModels.BoekenViewModel
+
+<form asp-action="Filters" asp-controller="Boeken" method="get">
+	<select asp-for="GeselecteerdeAuteurId" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))" class="form-control">
+		<option value="">Selectionnez un auteur</option>
+	</select>
+	<button type="submit" class="btn btn-primary">Filter</button>
+</form>
