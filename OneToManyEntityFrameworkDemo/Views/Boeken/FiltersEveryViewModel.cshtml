@@ -15,8 +15,13 @@
 	<thead>
 		<tr>
 			<th>
+				@Html.DisplayNameFor(model => model.GeselecteerdeAuteurId)
+				@* ID du livre *@
+			</th>
+			<th>
 				@Html.DisplayNameFor(model => model.Boeken)
 			</th>
+			
 			<th>
 				@Html.DisplayNameFor(model => model.Auteurs)
 			</th>
@@ -27,17 +32,21 @@
 		{
 			<tr>
 				<td>
+					@Html.DisplayFor(modelItem => item.BoekId)
+				</td>
+				<td>
 					@Html.DisplayFor(modelItem => item.Title)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Auteur.Naam)
 				</td>
+				
 			</tr>
 		}
 	</tbody>
 	<tfoot>
 		<tr>
-			<th>Compte</th>
+			<th colspan="2">Compte</th>
 			<td>@Model.Boeken.Count</td>
 		</tr>
 	</tfoot>
