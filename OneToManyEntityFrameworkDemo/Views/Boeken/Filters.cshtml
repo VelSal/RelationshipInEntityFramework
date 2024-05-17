@@ -6,3 +6,30 @@
 	</select>
 	<button type="submit" class="btn btn-primary mt-1 mb-1">Filter</button>
 </form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                AuteurNaam
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Boeken)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuteurNaam)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

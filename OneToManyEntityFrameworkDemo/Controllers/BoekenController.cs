@@ -31,6 +31,7 @@ namespace OneToManyEntityFrameworkDemo.Controllers
             //Ne fait rien ici
             IQueryable<Boek> boekenQuery = _context.Boeks.Include(b => b.Auteur);
 
+            //Si on selectionne quelque chose, on filtre sinon on montre tous les livres
             if (GeselecteerdeAuteurId.HasValue)
             {
                 boekenQuery = boekenQuery.Where(b => b.AuteurId == GeselecteerdeAuteurId);
