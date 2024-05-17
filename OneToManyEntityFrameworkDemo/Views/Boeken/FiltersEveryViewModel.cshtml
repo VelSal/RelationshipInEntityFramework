@@ -1,35 +1,38 @@
 ﻿@model OneToManyEntityFrameworkDemo.Models.ViewModels.BoekAuteurEveryViewModel
 
-<form asp-action="Filters" asp-controller="Boeken" method="get">
-    <select asp-for="GeselecteerdeAuteurId" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))" class="form-control">
-        <option value="">Selectionnez un auteur</option>
-    </select>
-    <button type="submit" class="btn btn-primary mt-1">Filter</button>
+<form class="form-inline" asp-action="FiltersEveryViewModel" asp-controller="Boeken" method="get">
+	<div class="input-group">
+		<select asp-for="GeselecteerdeAuteurId" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))" class="form-control">
+			<option value="">Selectionnez un auteur</option>
+		</select>
+		<button type="submit" class="btn btn-outline-primary form-group">Filter</button>
+	</div>
 </form>
 
+
+
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                AuteurNaam
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Boeken)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Auteur.Naam)
-                </td>
-            </tr>
-        }
-    </tbody>
+	<thead>
+		<tr>
+			<th>
+				Title
+			</th>
+			<th>
+				AuteurNaam
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Boeken)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Title)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Auteur.Naam)
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
