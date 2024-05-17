@@ -5,7 +5,7 @@
 		<select asp-for="GeselecteerdeAuteurId" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))" class="form-control">
 			<option value="">Selectionnez un auteur</option>
 		</select>
-		<button type="submit" class="btn btn-outline-primary form-group">Filter</button>
+		<button type="submit" class="btn btn-outline-primary form-group w-25">Filter</button>
 	</div>
 </form>
 
@@ -15,10 +15,10 @@
 	<thead>
 		<tr>
 			<th>
-				Title
+				@Html.DisplayNameFor(model => model.Boeken)
 			</th>
 			<th>
-				AuteurNaam
+				@Html.DisplayNameFor(model => model.Auteurs)
 			</th>
 		</tr>
 	</thead>
