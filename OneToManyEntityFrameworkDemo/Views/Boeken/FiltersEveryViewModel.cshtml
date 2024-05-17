@@ -1,6 +1,6 @@
 ﻿@model OneToManyEntityFrameworkDemo.Models.ViewModels.BoekAuteurEveryViewModel
 
-<form class="form-inline" asp-action="FiltersEveryViewModel" asp-controller="Boeken" method="get">
+<form class="form-inline mt-1" asp-action="FiltersEveryViewModel" asp-controller="Boeken" method="get">
 	<div class="input-group">
 		<select asp-for="GeselecteerdeAuteurId" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))" class="form-control">
 			<option value="">Selectionnez un auteur</option>
@@ -11,7 +11,7 @@
 
 
 
-<table class="table table-striped">
+<table class="table table-striped mt-5">
 	<thead>
 		<tr>
 			<th>
