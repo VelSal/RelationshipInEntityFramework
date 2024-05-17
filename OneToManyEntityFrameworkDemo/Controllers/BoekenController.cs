@@ -56,5 +56,27 @@ namespace OneToManyEntityFrameworkDemo.Controllers
 
             return View(filtersViewModel);
         }
+        public async Task<IActionResult> FiltersEveryViewModel(int? GeselecteerdeAuteurId)
+        {
+            var auteurs = await _context.Auteurs.ToListAsync();
+            
+            IQueryable<Boek> boekenQuery = _context.Boeks.Include(b => b.Auteur);
+
+            if (GeselecteerdeAuteurId.HasValue )
+            {
+                boekenQuery = boekenQuery.Where(b => b.AuteurId == GeselecteerdeAuteurId.Value);
+            }
+
+            var boeken = await boekenQuery.ToListAsync();
+            var ViewModel =  new BoekAuteurEveryViewModel
+            {
+                Auteurs = auteurs,
+                Boeken = boeken,
+                GeselecteerdeAuteurId = GeselecteerdeAuteurId ?? 0
+
+            };
+
+            return View(ViewModel);
+        }
     }
 }
