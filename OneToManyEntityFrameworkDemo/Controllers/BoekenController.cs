@@ -24,5 +24,9 @@ namespace OneToManyEntityFrameworkDemo.Controllers
                 });
             return View(boekAuteurViewModel);
         }
+        public async Task<IActionResult> Filters()
+        {
+            return View();
+        }
     }
 }
