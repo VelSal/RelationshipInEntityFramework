@@ -1,0 +1,51 @@
+﻿@using OneToManyEntityFrameworkDemo.Models.ViewModels
+@model EditBoekViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div>
+    <form asp-action="Edit" asp-controller="Boeken">
+
+        <input type="hidden" asp-for="BoekId" />
+
+        <div class="form-group">
+            <label asp-for="Titel" class="control-label"></label>
+            <input asp-for="Titel" class="form-control" />
+            <span asp-validation-for="Titel" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="AuteurId" class="control-label"></label>
+            <select asp-for="AuteurId" class="form-control"
+                    asp-items="@(new SelectList(Model.Auteurs,"AuteurId","Naam"))"></select>
+
+            <span asp-validation-for="AuteurId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Beschikbaarheid</label><br />
+            <input type="checkbox" asp-for="IsAvailable" /> Beschikbaar<br />
+            <input type="checkbox" asp-for="IsNewRelease" /> Nieuwe Uitgave<br />
+            <input type="checkbox" asp-for="IsBestSeller" /> Bestseller<br />
+        </div>
+        <div class="form-group">
+            <label>Type Binding</label><br />
+            <input type="radio" asp-for="BindingType" value="1" /> Hardcover<br />
+            <input type="radio" asp-for="BindingType" value="2" /> Paperback<br />
+            <input type="radio" asp-for="BindingType" value="3" /> Ebook<br />
+            <span asp-validation-for="BindingType" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-action="Edit" asp-controller="Boeken" type="submit" value="Save" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+<div>
+    <a asp-action="Filters">Terug naar de lijst</a>
+</div>

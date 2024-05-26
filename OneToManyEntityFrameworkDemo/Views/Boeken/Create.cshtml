@@ -1,0 +1,44 @@
+﻿@using OneToManyEntityFrameworkDemo.Models.ViewModels
+@model CreateBoekViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>Nieuw Boek Toevoegen</h2>
+
+<div>
+    <form asp-action="Create">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label asp-for="Titel" class="control-label"></label>
+            <input asp-for="Titel" class="form-control" />
+            <span asp-validation-for="Titel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AuteurId" class="control-label"></label>
+            <select asp-for="AuteurId" class="form-control" asp-items="@(new SelectList(Model.Auteurs, "AuteurId", "Naam"))">
+            </select>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <label><b>Beschikbaarheid</b></label>
+            <br />
+            <input type="checkbox" asp-for="IsAvailable">Beschikbaar</input>
+            <input type="checkbox" asp-for="IsNewRelease">Nieuwe Uitgave</input>
+            <input type="checkbox" asp-for="IsBestSeller">BestSeller</input>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <label><b>Type Binding</b></label>
+            <br />
+            <input type="radio" asp-for="BindingType" value="1">Hardcover></input>
+            <input type="radio" asp-for="BindingType" value="2">Paperback></input>
+            <input type="radio" asp-for="BindingType" value="3">Ebook></input>
+            <span class="text-danger" asp-validation-for="BindingType"></span>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

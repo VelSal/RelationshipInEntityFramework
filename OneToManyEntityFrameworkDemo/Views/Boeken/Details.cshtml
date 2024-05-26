@@ -1,0 +1,55 @@
+﻿@model Boek
+
+@{
+    ViewData["Title"] = "Boek Details";
+}
+
+<h2>Boek Details</h2>
+
+<div>
+    <h4>Boek</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Auteur.Naam)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Auteur.Naam)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsAvailable)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsNewRelease)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsNewRelease)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsBestSeller)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsBestSeller)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GetBindingType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetBindingType)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BoekId" class="btn btn-warning">Bewerken</a>
+    <a asp-action="FiltersONE" class="btn btn-secondary">Terug naar lijst</a>
+</div>

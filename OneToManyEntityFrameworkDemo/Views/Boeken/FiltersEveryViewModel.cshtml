@@ -40,7 +40,11 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.Auteur.Naam)
 				</td>
-				<td>@Html.ActionLink("Edit", "Edit", new string(id = item.BoekId))</td>
+				<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.BoekId }) 
+						@Html.ActionLink("Details", "Details", new { id = item.BoekId }) - 
+						@Html.ActionLink("Delete", "Delete", new { id = item.BoekId })
+				</td>
 				
 			</tr>
 		}
